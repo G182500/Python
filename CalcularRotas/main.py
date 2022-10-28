@@ -1,7 +1,7 @@
 import random
 
 from Coordenada import Coordenada
-#from Rota import Rota
+from Rota import Rota
 
 # Crie uma classe coordenada. Esta classe possui internamente
 # dois valores inteiros (x,y). Veja os exemplos abaixo:
@@ -43,7 +43,7 @@ except Exception as e:
     print(e)
 # Exceção
 # Elemento da tupla não é int or float
-'''
+
 # Crie um método distância que recebe como parâmetro outra coordenada.
 # Você deve calcular a distância euclidiana entre as duas coordeandas.
 
@@ -134,4 +134,3 @@ while(mudou):
 
 
 # Você deve melhorar esta função. Fazer otimizar mais rápido.
-'''
