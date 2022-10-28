@@ -27,3 +27,6 @@ class Rota:
             elif i == (tamanho_rotas - 1):
                 dist_euclidianas.append(self.rota[i].distancia(self.rota[0]))
         return sum(dist_euclidianas)
+    
+    def copy(self):
+        return self  #Problema -> Se a original for alterada, a cópia também é
