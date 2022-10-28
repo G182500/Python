@@ -1,3 +1,5 @@
+import math
+
 class Coordenada:
         def __init__(self, *args):
             if len(args) == 0: #Nenhum argumento passado
@@ -13,6 +15,8 @@ class Coordenada:
                        
                         if type(args[0][0]) == int and type(args[0][1]) == int:                 #com tipo certo
                             self.coordenada = args[0]
+                        elif type(args[0][0]) == float and type(args[0][1]) == float:               #com tipo certo
+                            self.coordenada = args[0]
                         else:                                                                   #mas com tipo errado
                             raise Exception("Elemento da tupla não é int ou float")
                     
@@ -21,7 +25,9 @@ class Coordenada:
 
             elif len(args) > 1: #Mais de um argumento passado
                 raise Exception("Numero de argumentos errado: " + str(len(args)))
-            
         
-    #def __str__(self):
-    #   return str(self.coordenada)
+        def __str__(self):
+            return str(self.coordenada)
+        
+        def distancia(self, c2): #euclidiana
+            return math.sqrt((self.coordenada[0] - c2.coordenada[0]) ** 2 + (self.coordenada[1] - c2.coordenada[1]) ** 2) 
