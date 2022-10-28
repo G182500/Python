@@ -17,5 +17,13 @@ class Rota:
 
     def addCoord(self, c):
         self.rota.append(c)
-
-    #def comprimento(self):
+   
+    def comprimento(self):
+        dist_euclidianas = []
+        tamanho_rotas = len(self.rota)
+        for i in range(tamanho_rotas):
+            if i <= (tamanho_rotas - 2):
+                dist_euclidianas.append(self.rota[i].distancia(self.rota[i+1]))
+            elif i == (tamanho_rotas - 1):
+                dist_euclidianas.append(self.rota[i].distancia(self.rota[0]))
+        return sum(dist_euclidianas)
