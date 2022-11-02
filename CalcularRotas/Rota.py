@@ -49,18 +49,14 @@ class Rota:
         for coord in self.rota:
             if i == 0: #Adiciona o ponto de inicio em newrota
                 newrota.rota.append(coord)
-                #print("posicao inicial é " + str(coord))
-            elif i != (len(self.rota)-1): #Adiciona outras coordenadas de acordo com as distancias (menos as duas ultimas) #2 ->1
+            elif i != (len(self.rota)-1): #Adiciona outras coordenadas (menos a ultima)
                 menordist = 99999999999999999.0
                 posicaoexiste = False
-                for j in range(len(self.rota)): #'J' assume todas as posições que não foram adicionadas
-                    if newrota.rota[i-1].menor(self.rota[j]):
-                    #Acima, pula a comparação de newrota[ultima] e j[i-1] (são os mesmos) e coordenadas menores que a atual (já foram)
-                        dist = newrota.rota[i-1].distancia(self.rota[j]) #Compara a posição mais recente de newrota com j
-                        #print("Distancia entre " + str(newrota.rota[i-1]) + str(self.rota[j]))
-                        if dist < menordist:
+                for j in range(i, len(self.rota)): #'J' assume todas as posições em self.rota à frente de newrota.rota[ultima]
+                    if self.rota[j] not in newrota.rota:#Ignora coordenadas já adicionadas em newrota
+                        dist = newrota.rota[i-1].distancia(self.rota[j]) #Compara a distancia de 'newrota[ultima]' e as coordenadas à frente
+                        if dist < menordist:#Coloca a coordenada com menor distancia em newrota
                             menordist = dist
-                            #print("Menor distancia: "+ str(menordist))
                             if posicaoexiste == False:
                                 newrota.rota.append(self.rota[j])
                                 posicaoexiste = True
