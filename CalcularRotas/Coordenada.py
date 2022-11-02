@@ -31,3 +31,10 @@ class Coordenada:
         
         def distancia(self, c2): #euclidiana
             return math.sqrt((self.coordenada[0] - c2.coordenada[0]) ** 2 + (self.coordenada[1] - c2.coordenada[1]) ** 2) 
+
+        def menor(self, c2): #True se self menor que c2
+            if self.coordenada[0] == c2.coordenada[1] and self.coordenada[1] == c2.coordenada[0]:
+                return False
+            elif self.coordenada[0] < c2.coordenada[0] or self.coordenada[1] < c2.coordenada[1]:
+                return True
+            return False
