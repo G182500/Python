@@ -29,4 +29,10 @@ class Rota:
         return sum(dist_euclidianas)
     
     def copy(self):
-        return self  #Problema -> Se a original for alterada, a cópia também é
+        copia = Rota()
+        for coord in self.rota:
+            copia.rota.append(coord)
+        return copia
+    
+    def shuffle(self):
+        self.rota = tuple(random.sample(self.rota, len(self.rota)))
