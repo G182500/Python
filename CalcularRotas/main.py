@@ -113,7 +113,7 @@ for i in range(50):
     rota1.addCoord(cord)
 print(rota1.comprimento())
 
-# A seguinte função otimiza (reduz) o comprimento da rota. OBS:FALTA ESSA!
+# A seguinte função otimiza (reduz) o comprimento da rota.
 print("---Otimiza----")
 mudou  = True
 while(mudou):
@@ -127,3 +127,24 @@ while(mudou):
             mudou = True
             
 # Você deve melhorar esta função. Fazer otimizar mais rápido.
+'''
+print("---Otimizado---")
+rota1.reduzir()  #ARRUMAR
+print(rota1.comprimento())
+print(rota1)
+
+c = Coordenada((1,0))
+c2 = Coordenada((0,1))
+print(c.menor(c2))
+
+rota = Rota()
+rota.addCoord(Coordenada((0, 0)))
+rota.addCoord(Coordenada((7, 4)))
+rota.addCoord(Coordenada((1, 1)))
+rota.addCoord(Coordenada((7, 5)))
+rota.addCoord(Coordenada((3, 4)))
+rota.addCoord(Coordenada((1, 0)))
+
+rota.reduzir()
+print(rota)
+'''
