@@ -42,7 +42,7 @@ try:
 except Exception as e:
     print(e)
 # Exceção
-# Elemento da tupla não é int or float
+# Elemento da tupla não é int ou float
 
 # Crie um método distância que recebe como parâmetro outra coordenada.
 # Você deve calcular a distância euclidiana entre as duas coordeandas.
@@ -99,21 +99,22 @@ print(rota2)
 # (0, 0)->(0, 4)->(3, 4)->(3, 3)->(0, 0)
 # (0, 0)->(0, 4)->(3, 4)->(0, 0)
 
-# Você deve criar um método que emabaralha as coordenads da rota
+# Você deve criar um método que embaralha as coordenads da rota
 rota1.shuffle()
 print(rota1)
 
 # Agora vamos criar uma rota com 50 coordenadas aleátórias entre 0 e 100.
 
 rota1 = Rota()
-for i in range(50):
+for i in range(50): #50
     x = random.randrange(1, 100)
     y = random.randrange(1, 100)
     cord = Coordenada((x, y))
     rota1.addCoord(cord)
 print(rota1.comprimento())
-
+print(rota1)
 # A seguinte função otimiza (reduz) o comprimento da rota.
+'''
 print("---Otimiza----")
 mudou  = True
 while(mudou):
@@ -125,14 +126,14 @@ while(mudou):
             rota1 = rotaAux
             print(rota1.comprimento())
             mudou = True
-            
-# Você deve melhorar esta função. Fazer otimizar mais rápido.
 '''
+# Você deve melhorar esta função. Fazer otimizar mais rápido.
+
 print("---Otimizado---")
-rota1.reduzir()  #ARRUMAR
+rota1.reduzir()
 print(rota1.comprimento())
 print(rota1)
-
+'''
 c = Coordenada((1,0))
 c2 = Coordenada((0,1))
 print(c.menor(c2))
