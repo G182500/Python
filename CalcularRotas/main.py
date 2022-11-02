@@ -90,10 +90,6 @@ print(rota1.comprimento())
 # neste caso deve ser impresso 12 que representa a soma dos três lados
 # dos triangulo, um com tamanho 3, outro com 4 e o último com 5.
 
-
-
-
-
 # Você deve criar um método clone que tira uma cópia da rota.
 rota2 = rota1.copy()
 rota1.addCoord(Coordenada((3, 3)))
@@ -117,9 +113,7 @@ for i in range(50):
     rota1.addCoord(cord)
 print(rota1.comprimento())
 
-
-
-# A seguinte função otimiza (reduz) o comprimento da rota.
+# A seguinte função otimiza (reduz) o comprimento da rota. OBS:FALTA ESSA!
 print("---Otimiza----")
 mudou  = True
 while(mudou):
@@ -131,6 +125,5 @@ while(mudou):
             rota1 = rotaAux
             print(rota1.comprimento())
             mudou = True
-
-
+            
 # Você deve melhorar esta função. Fazer otimizar mais rápido.
