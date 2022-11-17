@@ -1,5 +1,6 @@
 from Coordenada import Coordenada
 import random
+from time import time
 
 class Rota:
     def __init__(self, r = None):
@@ -50,7 +51,7 @@ class Rota:
             if i == 0: #Adiciona o ponto de inicio em newrota
                 newrota.rota.append(coord)
             elif i != (len(self.rota)-1): #Adiciona outras coordenadas (menos a ultima)
-                menordist = 99999999999999999.0
+                menordist = 99999999999999999999999.0
                 posicaoexiste = False
                 for j in range(i, len(self.rota)): #'J' assume todas as posições em self.rota à frente de newrota.rota[ultima]
                     if self.rota[j] not in newrota.rota:#Ignora coordenadas já adicionadas em newrota
@@ -69,3 +70,49 @@ class Rota:
             i += 1
         self.rota = []
         self.rota = newrota.rota
+        
+    def espera(self, tin):
+        mili_inicio = int(time() * 1000.0)
+        end_wait = False
+        s = 0
+        miliseg = 0
+        print("Esperando : " + str(s))
+        
+        while(end_wait != True):
+            if miliseg >= 280000:
+                miliseg = 0
+                s += 1000
+                print("Esperando : " + str(s))
+                
+            mili_atual = int(time() * 1000.0)
+            mili_corrente = mili_atual - mili_inicio
+            delta = mili_corrente - tin
+            
+            if (s * 1000) == tin:
+                break
+            if delta >= 0:
+                end_wait = True
+            miliseg += 1
+    
+    def randomCoords(self, n, max_coord):
+        while (len(self.rota)) < n:
+            x = random.randrange(1, max_coord)
+            y = random.randrange(1, max_coord)
+            self.addCoord(Coordenada((x, y)))
+
+    def maximo(self):  #Arrumar
+        max_y = 0
+        max_x = 0
+        for c in self.rota:
+            if c[0] > max_x and c[1] > max_y:
+                max_y = c[1]
+                max_x = c[0]
+                maior_c = c
+        return str(maior_c)
+
+# Esta função encontra o valor máximo em x (max_x) para as coordenadas da rota
+# o valor máximo em y (max_y) para as coordenadas da rota. A função devolve a
+# tupla (max_x,max_y)
+# O que foi impresso:
+# (352, 343)
+# Número esperado de linhas: 10
