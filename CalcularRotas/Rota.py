@@ -108,5 +108,13 @@ class Rota:
                 max_x = c.coordenada[0]
             if c.coordenada[1] > max_y:
                 max_y = c.coordenada[1]
-            
         return (max_x, max_y)
+    
+    def desenha(self, nome_arquivo):
+        imagem = Image.new('RGB',self.maximo(),(255, 255, 255))
+        
+        
+        
+        
+        
+        imagem.save(nome_arquivo, format = "png")
