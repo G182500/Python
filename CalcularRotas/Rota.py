@@ -100,18 +100,13 @@ class Rota:
             y = random.randrange(1, max_coord)
             self.addCoord(Coordenada((x, y)))
 
-     def maximo(self):  #Arrumar
+     def maximo(self):
         max_y = 0
         max_x = 0
         for c in self.rota:
-            if c[0] > max_x and c[1] > max_y:
-                max_y = c[1]
-                max_x = c[0]
+            if c.coordenada[0] > max_x:
+                max_x = c.coordenada[0]
+            if c.coordenada[1] > max_y:
+                max_y = c.coordenada[1]
+            
         return (max_x, max_y)
-
-# Esta função encontra o valor máximo em x (max_x) para as coordenadas da rota
-# o valor máximo em y (max_y) para as coordenadas da rota. A função devolve a
-# tupla (max_x,max_y)
-# O que foi impresso:
-# (352, 343)
-# Número esperado de linhas: 10
