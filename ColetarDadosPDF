@@ -39,8 +39,8 @@ def validarPDF(nome_pdf):
         if caracter != '\n':
             linha += caracter   #Adiciona caracteres em 'linha' até encontrar o 'enter', vulgo '\n'
 
-        else:                                       #Fim da linha, hora de procurar as informações nela:
-            if ender_CAEP in linha and l < 8:       #Linha limitada para considerar apenas o começo do arquivo na busca
+        else:                   #Fim da linha, hora de procurar as informações nela:
+            if ender_CAEP in linha:
                 ender_CAEP_achou = True
                 print("Endereço CAEP está correto! Encontrado na linha " + str(l))
             
