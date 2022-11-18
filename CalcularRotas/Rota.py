@@ -100,7 +100,7 @@ class Rota:
             y = random.randrange(1, max_coord)
             self.addCoord(Coordenada((x, y)))
 
-     def maximo(self):
+    def maximo(self):
         max_y = 0
         max_x = 0
         for c in self.rota:
@@ -111,10 +111,27 @@ class Rota:
         return (max_x, max_y)
     
     def desenha(self, nome_arquivo):
-        imagem = Image.new('RGB',self.maximo(),(255, 255, 255))
+        max = self.maximo()
+        tamanho = (max[0] + 10, max[1] + 10)
+        imagem = Image.new('RGB', tamanho, (255, 255, 255))
         
+        pixels = imagem.load()
         
+        #https://stackoverflow.com/questions/17774024/drawing-a-straight-line-between-two-points
         
-        
-        
-        imagem.save(nome_arquivo, format = "png")
+        imagem = imagem.rotate(90)
+        #imagem.save(nome_arquivo, format = "png")
+        return imagem
+
+# Esta função deve criar uma imagem de tamanho adequado,
+# um pouco maior que (max_x, max_y) e imprimir uma linha reta
+# entre as coordenadas. Uma linha reta entre a primeira e a segunda
+# coordenada. Uma linha reta entre a segunda e a terceira coordenada e
+# assim sucessivamente até a última coordenada, que deve ser conectada com
+# a primeira. A imagem deve ser um pouco maior que (max_x,max_y) pois deve
+# haver uma pequena margem em branco do lado esquerdo, do lado direito e embaixo.
+# Além disso, na parte debaixo deve estar escrito o comprimento da rota.
+# Tudo deve ser criado como uma Image do pacote PIL (pillow). Ao fim
+# a imagem deve ser salva no arquivo com nome 'filename' passado como parâmetro
+# e devolvida por um return. No caso, foi dado um .show() na imagem que veio
+# do método.
