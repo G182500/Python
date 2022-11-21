@@ -1,0 +1,69 @@
+from openpyxl import Workbook, load_workbook
+from openpyxl.utils import get_column_letter #get the column letter
+
+def validarPlanilha(p):
+    workbook = load_workbook(p)
+    #ws = workbook['Planilha1']   #Acesse diretamente o Sheet 1
+    sheet = workbook.active       #Ou use a aba ativa quando o arquivo foi carregado
+    n_linhas = sheet.max_row
+    n_colunas = sheet.max_column
+    
+    alfabeto = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    dados = ['NOME', 'TAG', 'NÚMERO DE SÉRIE', 'MARCA / MODELO', 'DATA', 'SITUAÇÃO']
+    
+    #Descobrir quais as colunas que interessam (Obs: o titulo pode estar na 1º ou 2º linha):
+    colunas = []
+    for i in range(n_colunas):
+        if sheet[alfabeto[i] + '1'].value != None:    
+            for dado in dados:
+                if dado in sheet[alfabeto[i] + '1'].value:
+                    colunas.append(alfabeto[i] + '1')
+                
+        if sheet[alfabeto[i] + '2'].value != None:
+            for dado in dados:         
+                if dado in sheet[alfabeto[i] + '2'].value:
+                    colunas.append(alfabeto[i] + '2')
+    print(colunas)
+     
+    #Verificar colunas selecionadas, linha por linha:
+    equipamentos = []
+    if colunas[1] == '1':
+        first_item = 1
+    else:
+        first_item = 2
+        
+    for linha in range(first_item, n_linhas):
+        dados_equipamento = {'NOME' : '',
+                            'TAG' : '',
+                            'NÚMERO DE SÉRIE' : '',
+                            'MARCA / MODELO' : '',
+                            'DATA' : '',
+                            'SITUAÇÃO' : ''}
+        d = 0
+        for coluna in colunas:
+            item = str(coluna[0]) + str(linha + 1)
+            if sheet[item].value != None and d == 4 and type(sheet[item].value) != str:  #Formatando datas
+                dados_equipamento[dados[d]] = format(sheet[item].value, '%d/%m/%Y')
+            else:
+                dados_equipamento[dados[d]] = str(sheet[item].value)
+            d += 1
+            
+        equipamentos.append(dados_equipamento)
+
+#INICIO DO PROGRAMA:
+planilha = 'D:\FOR-XXX_Gerenciamento_de_vidrarias_volumétricas.xlsx' #Obs: ter caminho
+validarPlanilha(planilha)
+
+
+'''
+for sheet in workbook:   #Ver quais são as abas deste arquivo. Caso mais de uma, podemos escolher com qual trabalhar
+    print(sheet)         #Retorno: Planilha1
+        
+ws['A1'] = 42            #Data can be assigned directly to cells
+ws.append([1, 2, 3])     #Rows can also be appended
+
+import datetime          #Python types will automatically be converted
+ws['A2'] = datetime.datetime.now()
+
+wb.save("sample.xlsx")   #Save the file
+'''
