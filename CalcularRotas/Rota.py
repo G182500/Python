@@ -111,17 +111,19 @@ class Rota:
         return (max_x, max_y)
     
     def desenha(self, nome_arquivo):
-        max = self.maximo()
-        tamanho = (max[0] + 10, max[1] + 10)
-        imagem = Image.new('RGB', tamanho, (255, 255, 255))
-        
-        pixels = imagem.load()
-        
-        #https://stackoverflow.com/questions/17774024/drawing-a-straight-line-between-two-points
-        
-        imagem = imagem.rotate(90)
-        #imagem.save(nome_arquivo, format = "png")
-        return imagem
+        max = self.maximo()  #Retorna um dicionario (maiorX, maiorY)
+        tamanho = (max[0] + 20, max[1] + 20)
+        img = Image.new("RGB", (tamanho))
+        i = 0
+        for item in self.rota:    
+            if i < (len(self.rota)-1):
+                shape = [self.rota[i].coordenada, self.rota[i+1].coordenada]
+                # create line image
+                img1 = ImageDraw.Draw(img)  
+                img1.line(shape, fill ="red", width = 0)    
+            i+=1
+            
+        return img
 
 # Esta função deve criar uma imagem de tamanho adequado,
 # um pouco maior que (max_x, max_y) e imprimir uma linha reta
