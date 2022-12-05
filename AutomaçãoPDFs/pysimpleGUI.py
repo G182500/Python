@@ -6,7 +6,7 @@ def coletarNome():
    
     #Cada item da matriz representa uma linha da coluna
     layout = [
-        [sg.Image(r'synvia.png', key = '-LOGO-')], #.gif or .png only
+        [sg.Image(r'logo.png', key = '-LOGO-')], #.gif or .png only
         [sg.Text('Digite o seu nome:')],
         [sg.Input(key = '-NOME-')],
         [sg.Button('Confirmar'), sg.Button('Cancelar')]]
