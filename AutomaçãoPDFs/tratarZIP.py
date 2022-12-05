@@ -64,14 +64,3 @@ for item in itemsPDF:
         else:
             assinarPDF(nome, item, data) #Internamente chama a função "addWatermark"
     i += 1
-#-------------------------------------------------------------------------------------------------------------------------------------------#
-
-'''
-arquivo = 'D:\LV01061-32987-22-R1.pdf' #Nome do arquivo com o caminho
-planilha = 'D:\FOR-XXX_Gerenciamento_de_vidrarias_volumétricas.xlsx'
-ok = buscarPlanilha(planilha, coletarInfosPDF(arquivo))
-
-#Renomear
-os.rename("diretorio/origem/nome-do-arquivo", "diretorio/destino/novo-nome-arquivo")
-shutil.move("diretorio/origem/nome-do-arquivo", "diretorio/lugar-para-onde-sera-movida/novo-nome-do-arquivo")
-'''
